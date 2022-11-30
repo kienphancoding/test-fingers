@@ -12,7 +12,6 @@ import style from "./Sidebar.module.scss";
 const Sidebar = () => {
   const list = [
     { path: "/", name: "Trang chủ", icon: faHouse },
-    { path: "/settings", name: "Tùy chỉnh", icon: faGear },
     { path: "/statics", name: "Thống kê", icon: faChartSimple },
     { path: "/trophy", name: "Thành tích", icon: faTrophy },
   ];

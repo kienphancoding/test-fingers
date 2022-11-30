@@ -9,7 +9,7 @@ const HomeStatic = ({ correct, incorrect, lengthCorrect, lengthIncorrect }) => {
       })
     : [];
 
-    const average = array => array.reduce((a, b) => a + b) / array.length
+  const average = (array) => array.reduce((a, b) => a + b) / array.length;
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -36,9 +36,13 @@ const HomeStatic = ({ correct, incorrect, lengthCorrect, lengthIncorrect }) => {
 
       <div className={clsx(style.statics)}>
         <h1 className={clsx(style.header)}>Records</h1>
-        {!!localStorage.getItem("correct") && <p className={clsx(style.record)}>{Math.max(...wpm)}</p>}
+        {!!localStorage.getItem("correct") && (
+          <p className={clsx(style.record)}>{Math.max(...wpm)}</p>
+        )}
         <h1 className={clsx(style.header)}>Average</h1>
-        {!!localStorage.getItem("correct") && <p className={clsx(style.record)}>{Math.floor(average(wpm))}</p>}
+        {!!localStorage.getItem("correct") && (
+          <p className={clsx(style.record)}>{Math.floor(average(wpm))}</p>
+        )}
       </div>
     </div>
   );
