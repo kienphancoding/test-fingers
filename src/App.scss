@@ -1,0 +1,27 @@
+:root {
+  --width-sidebar: 60px;
+  --primary: #300161;
+}
+
+* {
+  top: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono", monospace;
+  &::selection {
+    background-color: var(--primary);
+    color: white;
+  }
+}
+
+body {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+}
