@@ -7,7 +7,7 @@ import HomeForm from "./HomeForm";
 import HomeContent from "./HomeContent";
 
 const Home = () => {
-  const lengthContent = 20;
+  const lengthContent = 25;
   const [value, setValue] = useState("");
   const [seconds, setSeconds] = useState(60);
   const [indexContent, setIndexContent] = useState(0);
@@ -92,6 +92,7 @@ const Home = () => {
       setPlay(true);
     }
   };
+  
   const handleSubmit = (e) => {
     if (e.key === " " && show) {
       //statics

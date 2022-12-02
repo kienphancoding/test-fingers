@@ -1,7 +1,12 @@
-.wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px 0;
-    flex-direction: column;
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+  flex-direction: column;
+  h1 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 20px;
+  }
 }

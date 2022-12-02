@@ -1,6 +1,5 @@
 import {
-    faChartSimple,
-  faGear,
+  faChartSimple,
   faHouse,
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";

@@ -1,6 +1,6 @@
 import {
-  LineChart,
-  Line,
+  Area,
+  AreaChart,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -8,122 +8,140 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import clsx from "clsx";
-import style from "./Statics.module.scss"
+import style from "./Statics.module.scss";
 
 const Statics = () => {
-    const data = !!JSON.parse(localStorage.getItem("correct"))
+  const data = !!JSON.parse(localStorage.getItem("correct"))
     ? JSON.parse(localStorage.getItem("correct")).map((x, index) => {
         return {
-            name:index+1,
-            score:x - JSON.parse(localStorage.getItem("wrong"))[index]
-        }
+          name: `Lần ${index + 1}`,
+          score: x - JSON.parse(localStorage.getItem("wrong"))[index],
+        };
       })
-    : [{name:1,score:0}];
+    : [{ name: 1, score: 0 }];
 
-    const data2 = !!JSON.parse(localStorage.getItem("correct"))
+  const data2 = !!JSON.parse(localStorage.getItem("correct"))
     ? JSON.parse(localStorage.getItem("correct")).map((x, index) => {
         return {
-            name:index+1,
-            correct:x,
-            wrong:JSON.parse(localStorage.getItem("wrong"))[index],
-        }
+          name: `Lần ${index + 1}`,
+          correct: x,
+          wrong: JSON.parse(localStorage.getItem("wrong"))[index],
+        };
       })
-    : [{name:1,correct:0,wrong:0}];
+    : [{ name: 1, correct: 0, wrong: 0 }];
 
-    const data3 = !!JSON.parse(localStorage.getItem("correct"))
+  const data3 = !!JSON.parse(localStorage.getItem("correct"))
     ? JSON.parse(localStorage.getItem("correct")).map((x, index) => {
         return {
-            name:index+1,
-            correct:JSON.parse(localStorage.getItem("correctLength"))[index],
-            wrong:JSON.parse(localStorage.getItem("wrongLength"))[index],
-        }
+          name: `Lần ${index + 1}`,
+          correct: JSON.parse(localStorage.getItem("correctLength"))[index],
+          wrong: JSON.parse(localStorage.getItem("wrongLength"))[index],
+        };
       })
-    : [{name:1,correct:0,wrong:0}];
+    : [{ name: 1, correct: 0, wrong: 0 }];
   return (
     <div className={clsx(style.wrapper)}>
+      <h1>WPM</h1>
       <ResponsiveContainer width={1000} height={500}>
-        <LineChart
-          width={800}
-          height={300}
+        <AreaChart
+          width={500}
+          height={400}
           data={data}
           margin={{
-            top: 5,
+            top: 10,
             right: 30,
-            left: 20,
-            bottom: 5,
+            left: 0,
+            bottom: 0,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line
+          <Area
             type="monotone"
             dataKey="score"
+            stackId="1"
             stroke="var(--primary)"
-            activeDot={{ r: 8 }}
+            fill="var(--primary)"
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
 
-      <ResponsiveContainer width={1000} height={500} style={{marginTop:"50px"}}>
-        <LineChart
-          width={800}
-          height={300}
+      <h1>Số từ đúng/sai</h1>
+      <ResponsiveContainer
+        width={1000}
+        height={500}
+        style={{ marginTop: "50px" }}
+      >
+        <AreaChart
+          width={500}
+          height={400}
           data={data2}
           margin={{
-            top: 5,
+            top: 10,
             right: 30,
-            left: 20,
-            bottom: 5,
+            left: 0,
+            bottom: 0,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line
+          <Area
             type="monotone"
             dataKey="correct"
+            stackId="1"
             stroke="green"
-            activeDot={{ r: 8 }}
+            fill="green"
           />
-          <Line
+          <Area
             type="monotone"
             dataKey="wrong"
+            stackId="1"
             stroke="red"
+            fill="red"
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
 
-      <ResponsiveContainer width={1000} height={500} style={{marginTop:"50px"}}>
-        <LineChart
-          width={800}
-          height={300}
+      <h1>Số chữ đúng sai</h1>
+      <ResponsiveContainer
+        width={1000}
+        height={500}
+        style={{ marginTop: "50px" }}
+      >
+        <AreaChart
+          width={500}
+          height={400}
           data={data3}
           margin={{
-            top: 5,
+            top: 10,
             right: 30,
-            left: 20,
-            bottom: 5,
+            left: 0,
+            bottom: 0,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line
+          <Area
             type="monotone"
             dataKey="correct"
+            stackId="1"
             stroke="green"
-            activeDot={{ r: 8 }}
+            fill="green"
           />
-          <Line
+          <Area
             type="monotone"
             dataKey="wrong"
+            stackId="1"
             stroke="red"
+            fill="red"
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );

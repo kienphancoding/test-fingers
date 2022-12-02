@@ -2,14 +2,15 @@ import clsx from "clsx";
 import style from "./Trophy.module.scss";
 
 const Trophy = () => {
-  const highScore = [
-    20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 110,
-    120, 130, 140, 150, 160, 170, 180, 190, 200,
-  ];
-  const count = [
-    5, 10, 15, 20, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400,
-    500,
-  ];
+  let highScore = [];
+  for (let i = 10; i <= 200; i += 2) {
+    highScore = [...highScore, i];
+  }
+
+  let count = [];
+  for (let i = 5; i <= 500; i += 5) {
+    count = [...count, i];
+  }
   const wpm = !!JSON.parse(localStorage.getItem("correct"))
     ? JSON.parse(localStorage.getItem("correct")).map((x, index) => {
         return x - JSON.parse(localStorage.getItem("wrong"))[index];
